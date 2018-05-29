@@ -18,4 +18,4 @@ pipelines:
               tasks: # ordered list of tasks to execute
                # shorthand for script-executor plugin
                - exec: 
-                  command: build.sh
+                  command: ./build.sh
