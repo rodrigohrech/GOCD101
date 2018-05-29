@@ -2,7 +2,7 @@ format_version: 2
 pipelines:
   build: # definition of mypipe1 pipeline
     group: awesome_app # note that the group name can contain only of alphanumeric & underscore characters
-    label_template: "${mygit[:8]}"
+    label_template: "${app-git[:8]}"
     materials:
       app-git: # this is the name of material, the name can contain only of alphanumeric & underscore characters
         # keyword git says about type of material and url at once
