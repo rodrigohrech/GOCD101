@@ -17,4 +17,5 @@ pipelines:
                - java
               tasks: # ordered list of tasks to execute
                # shorthand for script-executor plugin
-               - script: ./build.sh ci
+               - exec: 
+                  command: ./build.sh
