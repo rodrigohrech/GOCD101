@@ -1,0 +1,20 @@
+format_version: 2
+pipelines:
+  build: # definition of mypipe1 pipeline
+    group: awesome_app # note that the group name can contain only of alphanumeric & underscore characters
+    label_template: "${mygit[:8]}"
+    materials:
+      app-git: # this is the name of material, the name can contain only of alphanumeric & underscore characters
+        # keyword git says about type of material and url at once
+        git: git@github.com:rodrigohrech/GOCD101.git
+        branch: master
+    stages: # list of stages in order
+      - compile: # name of stage
+          clean_workspace: true
+          jobs:
+            compile: # name of the job
+              resources:
+               - java
+              tasks: # ordered list of tasks to execute
+               # shorthand for script-executor plugin
+               - script: ./build.sh ci
