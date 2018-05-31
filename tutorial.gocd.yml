@@ -1,6 +1,6 @@
 format_version: 2
 pipelines:
-  build: # definition of mypipe1 pipeline
+  build: # definition of pipeline
     group: awesome_app # note that the group name can contain only of alphanumeric & underscore characters
     label_template: "${app-git[:8]}"
     materials:
