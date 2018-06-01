@@ -7,7 +7,7 @@ pipelines:
     environment_variables:
       BUILD_ENVIRONMENT: ci
     secure_variables:
-      ENV_PASSWORD: JixncP+2VLF
+      ENV_PASSWORD: "JixncP+2VLF"
     materials:
       app-git: # this is the name of material, the name can contain only of alphanumeric & underscore characters
         # keyword git says about type of material and url at once

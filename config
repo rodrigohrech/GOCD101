@@ -1,0 +1,5 @@
+<config-repos>
+    <config-repo pluginId="yaml.config.plugin" id="gocd-yaml-config">
+      <git url="https://github.com/rodrigohrech/GOCD101.git" />
+    </config-repo>
+  </config-repos>
