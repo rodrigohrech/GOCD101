@@ -23,3 +23,7 @@ pipelines:
               tasks: # ordered list of tasks to execute
                - exec: 
                   command: ./build.sh
+               - exec:
+                  command: echo $BUILD_ENVIRONMENT
+                - exec:
+                  command: echo $BUILD_ENVIRONMENT
