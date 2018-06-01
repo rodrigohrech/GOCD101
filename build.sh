@@ -2,9 +2,9 @@
 
 echo "Let us pretend that this is building something ... and takes 20 seconds"
 
-echo "This is the BUILD_ENVIRONMENT variable: " $BUILD_ENVIRONMENT
+echo "This is the BUILD_ENVIRONMENT variable: $BUILD_ENVIRONMENT" 
 
-echo "This is the ENV_PASSWORD secure variable: " $ENV_PASSWORD
+echo "This is the ENV_PASSWORD secure variable: $ENV_PASSWORD" 
 
 count=0
 while [ "$count" -lt 20 ]; do

@@ -22,7 +22,7 @@ pipelines:
                - exec: 
                   command: ./build.sh
                - exec:
-                  command: echo 
+                  command: sh
                   arguments:
-                      - 'This is the BUILD_ENVIRONMENT variable:'
-                      - $BUILD_ENVIRONMENT              
+                    - -c 
+                    - echo $BUILD_ENVIRONMENT
