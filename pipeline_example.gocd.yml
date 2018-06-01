@@ -1,8 +1,13 @@
-format_version: 2
+format_version: 2 
 pipelines:
-  build: # definition of pipeline
+  build: # definition of pipeline, where 'build' is the name of the pipeline
     group: awesome_app # note that the group name can contain only of alphanumeric & underscore characters
-    label_template: "${app-git[:8]}"
+    label_template: "${app-git[:8]}" # define the label used for each execution
+    lock_beahavior: none # needs GoCD >= 17.12 and format_version: 2 
+    environment_variables:
+      BUILD_ENVIRONMENT: ci 
+    secure_variables:
+      ENV_PASSWORD: "JixncP+2VLF"
     materials:
       app-git: # this is the name of material, the name can contain only of alphanumeric & underscore characters
         # keyword git says about type of material and url at once
@@ -10,12 +15,11 @@ pipelines:
         branch: master
     stages: # list of stages in order
       - compile: # name of stage
-          clean_workspace: true
+          clean_workspace: true # clean everytime this stage is triggered?
           jobs:
             compile: # name of the job
               resources:
                - java
               tasks: # ordered list of tasks to execute
-               # shorthand for script-executor plugin
                - exec: 
                   command: ./build.sh
