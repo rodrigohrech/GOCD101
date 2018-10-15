@@ -36,7 +36,7 @@ pipelines:
               #     source: ./*
               #     destination: dest/
               tasks: # ordered list of tasks to execute
-                - exec
+                - exec:
                   command: ./task.sh
       - deploy: # name of stage
           jobs:
