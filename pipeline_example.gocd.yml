@@ -75,14 +75,4 @@ pipelines:
                       - -c
                       - ls -la
                 - exec:
-                    command: sh
-                    arguments:
-                      - -c
-                      - ls -la regression/
-                - exec:
-                    command: sh
-                    arguments:
-                      - -c
-                      - cat regression/task.sh
-                - exec:
-                    command: regression/task.sh
+                    command: regression/dest/task.sh
