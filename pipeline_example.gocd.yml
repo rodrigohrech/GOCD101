@@ -31,10 +31,10 @@ pipelines:
             run-unit-tests: # name of the job
               resources:
                 - java
-              # artifacts:
-              #   - build:
-              #     source: ./*
-              #     destination: dest/
+              artifacts:
+                - build:
+                  source: ./*
+                  destination: dest/
               tasks: # ordered list of tasks to execute
                 - exec:
                     command: ./task.sh
