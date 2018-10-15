@@ -73,6 +73,6 @@ pipelines:
                     command: sh
                     arguments:
                       - -c
-                      - ls -la
+                      - ls -la regression/dest/
                 - exec:
                     command: regression/dest/task.sh
