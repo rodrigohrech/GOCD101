@@ -32,11 +32,11 @@ pipelines:
               resources:
                 - java
               artifacts:
-                - ? test
+                - test
                   source: ./task.sh
                   destination: dest
               tasks: # ordered list of tasks to execute
-                - ? exec
+                - exec
                   command: ./task.sh
       - deploy: # name of stage
           jobs:
