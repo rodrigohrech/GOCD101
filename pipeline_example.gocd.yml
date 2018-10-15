@@ -10,6 +10,7 @@ pipelines:
       app-git: # this is the name of material, the name can contain only of alphanumeric & underscore characters
         # keyword git says about type of material and url at once
         git: https://github.com/rodrigohrech/GOCD101.git
+        destination: awesome_app
         branch: master
     stages: # list of stages in order
       - compile: # name of stage
@@ -33,7 +34,7 @@ pipelines:
                 - java
               artifacts:
                 - build:
-                    source: ./*
+                    source: awesome_app/*
                     destination: dest/
               tasks: # ordered list of tasks to execute
                 - exec:
