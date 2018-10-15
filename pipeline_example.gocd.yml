@@ -32,8 +32,8 @@ pipelines:
               resources:
                 - java
               artifacts:
-                - test
-                  source: ./task.sh
+                - build
+                  source: ./
                   destination: dest
               tasks: # ordered list of tasks to execute
                 - exec
