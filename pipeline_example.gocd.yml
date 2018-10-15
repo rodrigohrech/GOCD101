@@ -37,7 +37,7 @@ pipelines:
               #     destination: dest/
               tasks: # ordered list of tasks to execute
                 - exec:
-                  command: ./task.sh
+                    command: ./task.sh
       - deploy: # name of stage
           jobs:
             deploy-to-qa: # name of the job
