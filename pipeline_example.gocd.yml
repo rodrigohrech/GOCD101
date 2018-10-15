@@ -1,55 +1,55 @@
-format_version: 2 
+format_version: 2
 pipelines:
   awesome_app_dev: # definition of pipeline, where 'build' is the name of the pipeline
-      group: awesome_app # note that the group name can contain only of alphanumeric & underscore characters
-      label_template: "${app-git[:8]}" # define the label used for each execution
-      lock_beahavior: none # needs GoCD >= 17.12 and format_version: 2 
-      environment_variables:
-        BUILD_ENVIRONMENT: ci
-      materials:
-        app-git: # this is the name of material, the name can contain only of alphanumeric & underscore characters
-          # keyword git says about type of material and url at once
-          git: https://github.com/rodrigohrech/GOCD101.git
-          branch: master
-      stages: # list of stages in order
-        - compile: # name of stage
-            clean_workspace: true # clean everytime this stage is triggered?
-            jobs:
-              compile: # name of the job
-                resources:
-                  - java
-                tasks: # ordered list of tasks to execute
-                  - exec: 
-                      command: ./task.sh
-                  - exec:
-                      command: sh
-                      arguments:
-                        - -c 
-                        - echo $BUILD_ENVIRONMENT
-        - unit-test: # name of stage
-            jobs:
-              run-unit-tests: # name of the job
-                resources:
-                  - java
-                artifacts:
-                  - test:
-                    source: ./task.sh
-                    destination: dest
-                tasks: # ordered list of tasks to execute
-                  - exec: 
-                    command: ./task.sh
-        - deploy: # name of stage
-            jobs:
-              deploy-to-qa: # name of the job
-                resources:
+    group: awesome_app # note that the group name can contain only of alphanumeric & underscore characters
+    label_template: "${app-git[:8]}" # define the label used for each execution
+    lock_beahavior: none # needs GoCD >= 17.12 and format_version: 2
+    environment_variables:
+      BUILD_ENVIRONMENT: ci
+    materials:
+      app-git: # this is the name of material, the name can contain only of alphanumeric & underscore characters
+        # keyword git says about type of material and url at once
+        git: https://github.com/rodrigohrech/GOCD101.git
+        branch: master
+    stages: # list of stages in order
+      - compile: # name of stage
+          clean_workspace: true # clean everytime this stage is triggered?
+          jobs:
+            compile: # name of the job
+              resources:
                 - java
-                tasks: # ordered list of tasks to execute
-                - exec: 
+              tasks: # ordered list of tasks to execute
+                - exec:
+                    command: ./task.sh
+                - exec:
+                    command: sh
+                    arguments:
+                      - -c
+                      - echo $BUILD_ENVIRONMENT
+      - unit-test: # name of stage
+          jobs:
+            run-unit-tests: # name of the job
+              resources:
+                - java
+              artifacts:
+                - ? test
+                  source: ./task.sh
+                  destination: dest
+              tasks: # ordered list of tasks to execute
+                - ? exec
+                  command: ./task.sh
+      - deploy: # name of stage
+          jobs:
+            deploy-to-qa: # name of the job
+              resources:
+                - java
+              tasks: # ordered list of tasks to execute
+                - exec:
                     command: ./task.sh
   # regression-testing: # definition of pipeline, where 'build' is the name of the pipeline
   #     group: awesome_app # note that the group name can contain only of alphanumeric & underscore characters
   #     label_template: "${app-git[:8]}" # define the label used for each execution
-  #     lock_beahavior: none # needs GoCD >= 17.12 and format_version: 2 
+  #     lock_beahavior: none # needs GoCD >= 17.12 and format_version: 2
   #     environment_variables:
   #       BUILD_ENVIRONMENT: ci
   #     materials:
@@ -65,5 +65,5 @@ pipelines:
   #               resources:
   #               - java
   #               tasks: # ordered list of tasks to execute
-  #               - exec: 
+  #               - exec:
   #                   command: ./task.sh
