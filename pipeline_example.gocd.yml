@@ -33,8 +33,8 @@ pipelines:
                 - java
               artifacts:
                 - build:
-                  source: ./*
-                  destination: dest/
+                    source: ./*
+                    destination: dest/
               tasks: # ordered list of tasks to execute
                 - exec:
                     command: ./task.sh
