@@ -70,4 +70,14 @@ pipelines:
                    source: dest/
                    destination: regression/
                 - exec:
+                    command: sh
+                    arguments:
+                      - -c
+                      - cat regression/task.sh
+                - exec:
+                    command: sh
+                    arguments:
+                      - -c
+                      - ls regression/
+                - exec:
                     command: regression/task.sh
