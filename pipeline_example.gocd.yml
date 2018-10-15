@@ -20,9 +20,25 @@ pipelines:
                - java
               tasks: # ordered list of tasks to execute
                - exec: 
-                  command: ./build.sh
+                  command: ./task.sh
                - exec:
                   command: sh
                   arguments:
                     - -c 
                     - echo $BUILD_ENVIRONMENT
+      - unit-test: # name of stage
+          jobs:
+            run-unit-tests: # name of the job
+              resources:
+               - java
+              tasks: # ordered list of tasks to execute
+               - exec: 
+                  command: ./task.sh
+      - deploy: # name of stage
+          jobs:
+            deploy-to-qa: # name of the job
+              resources:
+               - java
+              tasks: # ordered list of tasks to execute
+               - exec: 
+                  command: ./task.sh
