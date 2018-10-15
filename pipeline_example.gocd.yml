@@ -21,7 +21,7 @@ pipelines:
                 - java
               tasks: # ordered list of tasks to execute
                 - exec:
-                    command: ./task.sh
+                    command: awesome_app/task.sh
                 - exec:
                     command: sh
                     arguments:
@@ -38,7 +38,7 @@ pipelines:
                     destination: dest/
               tasks: # ordered list of tasks to execute
                 - exec:
-                    command: ./task.sh
+                    command: awesome_app/task.sh
       - deploy: # name of stage
           jobs:
             deploy-to-qa: # name of the job
@@ -46,7 +46,7 @@ pipelines:
                 - java
               tasks: # ordered list of tasks to execute
                 - exec:
-                    command: ./task.sh
+                    command: awesome_app/task.sh
   # regression-testing: # definition of pipeline, where 'build' is the name of the pipeline
   #     group: awesome_app # note that the group name can contain only of alphanumeric & underscore characters
   #     label_template: "${app-git[:8]}" # define the label used for each execution
